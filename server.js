@@ -33,6 +33,7 @@ app.use((req, res, next) => {
 //   res.render('maintenance.hbs');
 // });
 
+
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', (req, res) => {
@@ -51,6 +52,14 @@ app.get('/about', (req, res) => {
   });
 });
 
+app.get('/projects', (req, res) => {
+  res.send({
+    pageTitle: 'Projects Page',
+      projectMessage: 'This is projects page!',
+      currentYear: new Date().getFullYear()
+    });
+});
+
 // /bad - send back json with errorMessage
 app.get('/bad', (req, res) => {
   res.send({
@@ -59,6 +68,7 @@ app.get('/bad', (req, res) => {
     errorMessage: "bad request!"
   });
 });
+
 
 
 app.listen(port, () => {
